@@ -1,69 +1,155 @@
 angular.module('starter.controllers', [])
 
+
+
 .controller('MainCtrl', function($scope) {})
 
-.controller('TeacherCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('TeacherCtrl', function($scope, $http) {
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+  $scope.teachers = [];
+
+  $scope.getTeacher = function(){
+    var url = "http://www.realempirestudio.com/api/maestros/";
+    var opt = {limit:6000};
+      $http({url:url,params:opt})
+      .success(function(data){
+        $scope.teachers = data;
+      })
+  }
+
+  $scope.getTeacher();
+
 })
 
-.controller('TeacherDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('TeacherDetailCtrl', function($scope, $http, $stateParams) {
+  $scope.teacher = {}
+
+  $scope.getTeacherDetail = function(){
+    var url = "http://www.realempirestudio.com/api/maestros/"+$stateParams.slug+"/";
+    $http.get(url)
+      .success(function(data){
+        $scope.teacher = data;
+    })
+  }
+
+  $scope.getTeacherDetail();
 })
 
 
 
 
-.controller('ClassCtrl', function($scope, $http) {
-  $scope.classes = []
+.controller('ClassCtrl', function($scope, $http, $q, $ionicLoading) {
+  $scope.Monday = []
+  $scope.Saturday = []
+  $scope.Tuesday = []
+  $scope.Wednesday = []
+  $scope.Thursday = []
+  $scope.Friday = []
 
   var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var daysEnglishDance = []
-  
-  for(i=0; i < 7 ; i++ )
-  {
-    var today = new Date();
+  var daysSpanishDance = []
+  var promises = [];
 
-    if (i === 1) 
+  // for(i=0; i < 7 ; i++ )
+  // {
+  //   var today = new Date();
 
-      daysEnglishDance.push(days[ today.getDay() ]);
+  //   if (i === 1) {
+  //     daysEnglishDance.push(days[ today.getDay() ]);
+  //   }
     
-    else if(i>1)
-      if (days[ today.getDay() ] !== "Sunday") {
-
-          var tomorrow = new Date();
-          tomorrow.setDate(today.getDate()+i);
-          daysEnglishDance.push(days[ tomorrow.getDay() ]);
-
-      };
-  }
-
-      console.log(daysEnglishDance);
-
+  //   else if(i>1)
+  //     if (days[ today.getDay() ] !== "Sunday") {
+  //         var tomorrow = new Date();
+  //         tomorrow.setDate(today.getDate()+i);
+  //         daysEnglishDance.push(days[ tomorrow.getDay() ]);
+  //     };
+  // }
 
   var today = new Date();
   var tomorrow = new Date();
   tomorrow.setDate(today.getDate()+1);
 
-  $scope.getClass = function(){
-    $http.get("http://www.realempirestudio.com/api/clases/",
-    {day:"Monday"})
-    .success(function(data){
-      $scope.classes = data;
-    })
+  $scope.getClass = function()
+  {
+    for(i=0;i<days.length;i++)
+      {
+        $scope.getDay(days[i])
+      }
+  }
 
-
+  $scope.getDay = function(day){
+    console.log(day);
+      var url = "http://www.realempirestudio.com/api/clases/";
+      var opt = {day:day, limit:6000};
+        $http({url:url,params:opt})
+        .success(function(data){
+          $scope[day] = data;
+          console.log(day)
+          console.log($scope[day])
+        })
   }
 
   $scope.getClass();
-});
+})
+.filter('spanishDay', function() {
+  return function(day) {
+    console.log(day)
+    switch(day){
+       case "Monday":
+         return "Lunes";
+      case "Tuesday":
+         return "Martes";
+      case "Wednesday":
+         return "Miercoles";
+      case "Thursday":
+         return "Jueves";
+      case "Friday":
+         return "Viernes";
+      case "Saturday":
+         return "Sabado";       
+     }
+  };
+})
+
+.controller('VideosCtrl', function($scope, $http, $sce) {
+  $scope.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  }
+  $scope.videos = {}
+
+  $scope.getVideos = function(){
+    var url = "http://www.realempirestudio.com/api/videos/";
+    $http.get(url)
+      .success(function(data){
+        for(i=0; i < data.results.length; i++){
+          data.results[i].youtube = "https://www.youtube.com/embed/"+data.results[i].youtube_id;
+        }
+        console.log(data)
+        $scope.videos = data;    
+      })
+  }
+
+  $scope.getVideos();
+})
+.filter('youtubeUrl', function() {
+  return function(embeded_id) {
+    return "https://www.youtube.com/embed/"+embeded_id;
+  };
+})
+
+.controller('EventsCtrl', function($scope, $http) {
+  $scope.events = {}
+
+  $scope.getVideos = function(){
+    var url = "http://www.realempirestudio.com/api/videos/";
+    $http.get(url)
+      .success(function(data){
+       
+        $scope.events = data;
+    })
+  }
+
+  $scope.getVideos();
+})

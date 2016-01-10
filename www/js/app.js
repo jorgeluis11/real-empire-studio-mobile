@@ -16,10 +16,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
+     if(window.StatusBar) {
+        StatusBar.overlaysWebView(false);
+        // StatusBar.style(1);
+        StatusBar.backgroundColorByHexString('#0B4F84') 
+
+      } 
   });
 })
 
@@ -55,7 +57,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
     .state('teacher-detail', {
-      url: '/teacher/:id',
+      url: '/teacher/:slug',
       views: {
         'main': {
           templateUrl: 'templates/teacher-detail.html',
@@ -72,9 +74,88 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'ClassCtrl'
       }
     }
+  })
+
+  .state('videos', {
+    url: '/videos',
+    views: {
+      'main': {
+        templateUrl: 'templates/videos.html',
+        controller: 'VideosCtrl'
+      }
+    }
+  })
+
+  .state('events', {
+    url: '/events',
+    views: {
+      'main': {
+        templateUrl: 'templates/events.html',
+        controller: 'EventsCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/main');
 
-});
+}).config(function($httpProvider) { 
+
+  $httpProvider.interceptors.push(function($rootScope) {
+      
+      return {
+        
+        request: function(config) {
+          
+          $rootScope.$broadcast('loading:show')
+          
+          return config
+          
+        },
+        
+        response: function(response) {
+          
+          $rootScope.$broadcast('loading:hide')
+          
+          return response
+          
+        }
+        
+      }
+      
+  })
+
+}).run(function($ionicPlatform, $rootScope, $ionicLoading) {
+    
+    $rootScope
+    
+    $rootScope.$on('loading:show', function() {
+      
+      $ionicLoading.show({template: 'Please Wait!'})
+      
+    })
+  
+    $rootScope.$on('loading:hide', function() {
+      
+      $ionicLoading.hide()
+      
+    })
+  
+    $ionicPlatform.ready(function() {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if(window.cordova && window.cordova.plugins.Keyboard) {
+        
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        
+      }
+      
+      if(window.StatusBar) {
+        
+        StatusBar.styleDefault();
+        
+      }
+      
+    });
+    
+  });

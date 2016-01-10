@@ -1,0 +1,47 @@
+<ion-view view-title="Maestros">
+  <ion-content>
+   <!-- ng-style="{'background-image': 'url('+teacher.image_medium+')'}" -->
+    <div class="profile padding">
+    	<img class="profile-image center-div" ng-src="{{teacher.image_medium}}" alt="">
+    	<div class="row">
+	    	<div class="col col-25"></div>
+
+    		<div class="col col-50 col-offset-33 label-no-size label-default">{{teacher.name}}</div>
+    	</div>
+	</div>
+	<h4 class="profile-class center white padding">
+		Clases
+	</h4>
+	<ion-item class="animate-repeat row" ng-repeat="class in teacher.course">
+          
+		 <!--  <div class="col col-20 class-item-date">
+            <h2>{{class.start_time}}<br>
+              <span>{{class.start_time_end}}</span>
+            </h2>
+
+          </div> -->
+
+          <div class="col col-33 class-item-date">
+            <h2>{{class.day | spanishDay}}<br>
+              <span>{{class.start_time}} {{class.start_time_end}}</span>
+            </h2>
+
+          </div>
+
+          <div class="col col-67 padding-horizontal">
+            <h2>{{class.name}}</h2>
+            <p>{{class.lastText}}</p>
+          </div>
+      </ion-item>
+
+    <h4 class="profile-class center white padding" ng-if="teacher.biography">
+		Biografia
+	</h4>
+	<div class="row center">
+		<div class="col padding" ng-bind-html="teacher.biography">
+			
+		</div>
+	</div>
+	
+  </ion-content>
+</ion-view>

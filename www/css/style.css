@@ -3,6 +3,16 @@
 	text-align: center;
 }
 
+.center-div {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.white{
+	color:white;
+}
+
 .title-image {
     margin-top: 5px;
     height: 35px;
@@ -82,4 +92,108 @@
 
     -webkit-transition-duration: 0s;
     transition-duration: 0s;
+}
+
+
+/*Class*/
+
+.item-divider{
+	color:black;
+	background-color: rgba(0,0,0,0.05);
+	/*border:none;*/
+	/*display:none;*/
+}
+
+.item-divider>h3{
+	color:black;
+}
+
+.class-item-date{
+
+    border-right: dashed 1px rgba(0,0,0,0.2);
+	text-align: right;
+}
+
+
+/*Teachers*/
+
+.label-default {
+    background-color: #777;
+}
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    font-size: 0.6em;
+    margin-left: 2px;
+
+}
+
+.label-no-size {
+	display: block;
+	margin:0 30%;
+    padding: .2em .6em .3em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    /*vertical-align: baseline;*/
+    border-radius: .25em;
+    /*font-size: 0.6em;*/
+    margin-left: 2px;
+    background-color: rgba(43,43,43,.6);
+
+}
+
+.label-info {
+    background-color: #5bc0de;
+}
+
+.label-danger {
+    background-color: #FF5A56;
+}
+
+.image-teacher{
+	top: 10px !important;
+    left: 8px !important;
+    max-width: 55px !important;
+    max-height: 55px !important;
+}
+
+
+/*Teacher Detail*/
+
+.profile{
+	/*background-color: #2b2b2b;
+	height: 50%;*/
+	background-image: url('../img/empire-state-building-bg.jpg');
+	background-size: 500px;
+}
+
+.profile-image{
+	border-radius:50%;
+	max-width: 120px;
+	max-height: 120px;
+	min-height: 120px;
+	min-width: 120px;
+	border: solid 1px rgba(255,255,255,1);
+	margin-top:10px;
+
+}
+
+.profile-class{
+		background-color: #222222;
+		margin:0;
+}
+
+.profile-name{
+	margin-top:5px;
 }

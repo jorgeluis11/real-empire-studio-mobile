@@ -1,9 +1,12 @@
-<ion-view view-title="Account">
+<ion-view view-title="Maestro">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <div class="list">
+	    <a class="item item-avatar item-icon-right"  ng-repeat="teacher in teachers.results | orderBy:'id'" ui-sref="teacher-detail({ slug: teacher.slug })">
+	      <img class="image-teacher" src="{{teacher.image_small}}">
+	      <h2>{{teacher.name}}</h2>
+	      <span class="label label-default" ng-repeat="course in teacher.course">{{course.name}}</span>
+	      <i class="icon ion-chevron-right icon-accessory"></i>
+	    </a>
+	</div>
   </ion-content>
 </ion-view>
