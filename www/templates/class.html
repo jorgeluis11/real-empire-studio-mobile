@@ -1,0 +1,19 @@
+<ion-view view-title="Clases">
+  <ion-content>
+    <ion-list>
+    <div class="item item-divider center">
+      Lunes
+    </div>
+      <ion-item class="animate-repeat item-remove-animate item-avatar item-icon-right" ng-repeat="class in classes.results" type="item-text-wrap" href="#/tab/chats/{{class.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{class.name}}</h2>
+        <p>{{class.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(class)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
