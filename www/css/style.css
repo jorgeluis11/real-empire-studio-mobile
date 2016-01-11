@@ -197,3 +197,19 @@
 .profile-name{
 	margin-top:5px;
 }
+
+.video-container>iframe{
+	width: 100%;
+}
+
+.class-item-date>h2{
+	margin:0;
+	color:#222222;
+}
+.class-item-date>div{
+
+    font-size: .7em;
+    position: relative;
+    top: -3px;
+    color: #444444;
+}

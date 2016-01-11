@@ -17,11 +17,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     }
      if(window.StatusBar) {
-        StatusBar.overlaysWebView(false);
-        // StatusBar.style(1);
-        StatusBar.backgroundColorByHexString('#0B4F84') 
+        // StatusBar.overlaysWebView(false);
+        StatusBar.style(1)
+        // StatusBar.backgroundColorByHexString('#000000') 
 
       } 
+
+      ionic.Platform.fullScreen(true, true);
+
+      
   });
 })
 

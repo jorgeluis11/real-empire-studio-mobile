@@ -4,16 +4,16 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="Videos">
-  <ion-content class="padding">
+<ion-view view-title="Videos" >
+  <ion-content class="padding has-header" overflow-scroll = "true" >
     <ion-list>
         <div class="card" ng-repeat="video in videos.results">
             <ion-item>
+                <h3 class="center">{{video.name}}</h3>
                 <div class="video-container">
-                    <iframe src="{{trustSrc(video.youtube)}}" frameborder="0" width="560" height="315"></iframe>
+                    <iframe src="{{trustSrc(video.youtube)}}" frameborder="0"></iframe>
                 </div>
             </ion-item>
-            {{video.youtube}}
         </div>
     </ion-list>
   </ion-content>

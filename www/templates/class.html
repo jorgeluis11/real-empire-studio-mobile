@@ -1,19 +1,19 @@
-<ion-view view-title="Clases">
-  <ion-content>
+<ion-view view-title="Clases" >
+  <ion-content class="has-header">
     <ion-list>
 
      <div class="item item-divider center" ng-if="Monday.count !== 0">
         <h3>Lunes</h3>
       </div>
       <ion-item class="animate-repeat row" ng-repeat="class in Monday.results">
-          <div class="col col-20 class-item-date">
-            <h2>{{class.start_time}}<br>
-              <span>{{class.start_time_end}}</span>
+          <div class="col col-20 class-item-date padding">
+            <h2>{{class.start_time}}
+              
             </h2>
-
+            <div class="title-right">{{class.start_time_end}}</div>
           </div>
 
-          <div class="col col-80 padding-horizontal">
+          <div class="col col-80 padding">
             <h2>{{class.name}}</h2>
             <p>{{class.lastText}}</p>
           </div>
@@ -24,14 +24,14 @@
         <h3>Martes</h3>
       </div>
       <ion-item class="animate-repeat row" ng-repeat="class in Tuesday.results">
-          <div class="col col-20 class-item-date">
-            <h2>{{class.start_time}}<br>
-              <span>{{class.start_time_end}}</span>
+          <div class="col col-20 class-item-date padding">
+            <h2>{{class.start_time}}
+              
             </h2>
-
+            <div class="title-right">{{class.start_time_end}}</div>
           </div>
 
-          <div class="col col-80 padding-horizontal">
+          <div class="col col-80 padding">
             <h2>{{class.name}}</h2>
             <p>{{class.lastText}}</p>
           </div>
@@ -42,14 +42,14 @@
         <h3>Miercoles</h3>
       </div>
       <ion-item class="animate-repeat row" ng-repeat="class in Wednesday.results">
-          <div class="col col-20 class-item-date">
-            <h2>{{class.start_time}}<br>
-              <span>{{class.start_time_end}}</span>
+           <div class="col col-20 class-item-date padding">
+            <h2>{{class.start_time}}
+              
             </h2>
-
+            <div class="title-right">{{class.start_time_end}}</div>
           </div>
 
-          <div class="col col-80 padding-horizontal">
+          <div class="col col-80 padding">
             <h2>{{class.name}}</h2>
             <p>{{class.lastText}}</p>
           </div>
@@ -60,14 +60,14 @@
         <h3>Jueves</h3>
       </div>
       <ion-item class="animate-repeat row" ng-repeat="class in Thursday.results">
-          <div class="col col-20 class-item-date">
-           <h2>{{class.start_time}}<br>
-              <span>{{class.start_time_end}}</span>
+           <div class="col col-20 class-item-date padding">
+            <h2>{{class.start_time}}
+              
             </h2>
-
+            <div class="title-right">{{class.start_time_end}}</div>
           </div>
 
-          <div class="col col-80 padding-horizontal">
+          <div class="col col-80 padding">
             <h2>{{class.name}}</h2>
             <p>{{class.lastText}}</p>
           </div>
@@ -77,14 +77,14 @@
         <h3>Viernes</h3>
       </div>
       <ion-item class="animate-repeat row" ng-repeat="class in Friday.results">
-          <div class="col col-20 class-item-date">
-            <h2>{{class.start_time}}<br>
-              <span>{{class.start_time_end}}</span>
+          <div class="col col-20 class-item-date padding">
+            <h2>{{class.start_time}}
+              
             </h2>
-
+            <div class="title-right">{{class.start_time_end}}</div>
           </div>
 
-          <div class="col col-80 padding-horizontal">
+          <div class="col col-80 padding">
             <h2>{{class.name}}</h2>
             <p>{{class.lastText}}</p>
           </div>
@@ -95,14 +95,14 @@
         <h3>Sabado</h3>
       </div>
       <ion-item class="animate-repeat row" ng-repeat="class in Saturday.results">
-          <div class="col col-20 class-item-date">
-            <h2>{{class.start_time}}<br>
-              <span>{{class.start_time_end}}</span>
+           <div class="col col-20 class-item-date padding">
+            <h2>{{class.start_time}}
+              
             </h2>
-
+            <div class="title-right">{{class.start_time_end}}</div>
           </div>
 
-          <div class="col col-80 padding-horizontal">
+          <div class="col col-80 padding">
             <h2>{{class.name}}</h2>
             <p>{{class.lastText}}</p>
           </div>
