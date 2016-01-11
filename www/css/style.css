@@ -24,10 +24,46 @@
 }
 
 .list-main{
-	height: 150px;
+	height: 200px;
 	background-color: black;
 	/*border-bottom: 1px solid rgba(255,255,255,0.5);*/
 	color:white;
+    padding: 0px!important;
+    margin-bottom: 0px!important;
+
+}
+
+.img{
+    margin-bottom: 0px!important;
+}
+
+#clases{
+    background: url('../img/clases.png') no-repeat;
+    background-size: 100%;
+}
+
+#maestros{
+    background: url('../img/maestros.png') no-repeat;
+    background-size: 100%;
+}
+
+#eventos{
+    background: url('../img/eventos.png') no-repeat;
+    background-size: 100%;
+}
+
+#videos{
+    background: url('../img/videos.png') no-repeat;
+    background-size: 100%;
+}
+
+.bg-color{
+    background-color: rgba(0,0,0,0.3);
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    text-shadow: 2px 2px #444;
+    padding: 10px;
 }
 
 .list-main-image{
