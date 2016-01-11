@@ -5,16 +5,53 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="Videos" >
-  <ion-content class="padding has-header" overflow-scroll = "true" >
-    <ion-list>
-        <div class="card" ng-repeat="video in videos.results">
-            <ion-item>
-                <h3 class="center">{{video.name}}</h3>
-                <div class="video-container">
-                    <iframe src="{{trustSrc(video.youtube)}}" frameborder="0"></iframe>
-                </div>
-            </ion-item>
+  <ion-content class="has-header" overflow-scroll = "true" >
+    <ion-list class='video-list'>
+
+    <div ng-repeat="video in videos.results">
+      <!--<h4 class="profile-class center white padding">
+        {{video.name}}
+      </h4> -->
+
+      <div class="item ">
+        <h2 class="center">{{video.name}}</h2>
+      </div>
+
+      <div class="item item-body item-video-body">
+          <iframe class="videos" src="{{trustSrc(video.youtube)}}" frameborder="0"></iframe>
+          <p>
+           {{video.description}}
+          </p>
+          <a class="item item-icon-left assertive" href="#">
+            <i class="icon ion-share"></i>
+            Share Video
+          </a>
         </div>
+
+    </div>
+
+    <div ng-repeat="video in videos.results">
+      <!--<h4 class="profile-class center white padding">
+        {{video.name}}
+      </h4> -->
+
+      <div class="item ">
+        <h2 class="center">{{video.name}}</h2>
+      </div>
+
+      <div class="item item-body item-video-body">
+          <iframe class="videos" src="{{trustSrc(video.youtube)}}" frameborder="0"></iframe>
+          <p>
+           {{video.description}}
+          </p>
+          <a class="item item-icon-left assertive" href="#">
+            <i class="icon ion-share"></i>
+            Share Video
+          </a>
+        </div>
+
+    </div>
+
     </ion-list>
   </ion-content>
 </ion-view>
