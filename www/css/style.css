@@ -56,6 +56,11 @@
     background-size: 100%;
 }
 
+#contactanos{
+    background: url('../img/contact.png') no-repeat;
+    background-size: 100%;
+}
+
 .bg-color{
     background-color: rgba(0,0,0,0.3);
     height: 100%;
