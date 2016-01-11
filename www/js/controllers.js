@@ -93,7 +93,7 @@ angular.module('starter.controllers', [])
 
   $scope.getClass();
 })
-.controller('VideosCtrl', function($scope, $http, $sce) {
+.controller('VideosCtrl', function($scope, $http, $sce,  $cordovaSocialSharing) {
   $scope.trustSrc = function(src) {
     return $sce.trustAsResourceUrl(src);
   }
@@ -109,6 +109,10 @@ angular.module('starter.controllers', [])
         console.log(data)
         $scope.videos = data;    
       })
+  }
+
+  $scope.shareAnywhere = function() {
+    $cordovaSocialSharing.share("Real Empire Studio, academia que cuenta con maestros y coreógrafos especializados en diferentes estilos.", "Real Empire Studio iPhone y Android App", "", "www.realempirestudio.com");
   }
 
   $scope.getVideos();
