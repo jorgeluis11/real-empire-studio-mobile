@@ -1,0 +1,33 @@
+<ion-view view-title="Eventos" >
+  <ion-content class="has-header">
+    <ion-list>
+      <div ng-show="events.results < 1" class="row">
+        <div class="col col-center">
+          <h2>No hay ningun evento actualmente, se anunciaran proximamente.</h2>
+        </div>
+      <ion-item class="animate-repeat row" ng-repeat="event in events.results">
+        <div class="content has-header ionic-pseudo">
+          <div class="row">
+            <div class="col list card">
+              <div class="item ">
+                <h2>{{ event.name }}</h2>
+                <p><strong><i class="icon ion-ios-time-outline"></i> Horario: </strong> {{ event.time }}</p>
+              </div>
+
+              <div class="item item-image">
+                <img src="http://127.0.0.1:9000/media/versions/media/Screen_Shot_2015-10-31_at_12.30.00_AM_P2cJvqv/cbba46011f9faabc1982d59f978591c1.jpg">
+              </div>
+
+              <p class="item"><strong><i class="icon ion-ios-list-outline"></i> Descripción: </strong> {{ event.description }}</p>
+
+              <a class="item item-icon-left assertive" href="#">
+                <i class="icon ion-music-note"></i>
+                Leer mas información
+              </a>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

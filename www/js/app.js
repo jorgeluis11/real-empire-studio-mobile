@@ -37,10 +37,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-
-
   // Each tab has its own nav history stack:
-
   .state('main', {
     url: '/main',
     views: {
@@ -96,6 +93,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'main': {
         templateUrl: 'templates/events.html',
         controller: 'EventsCtrl'
+      }
+    }
+  })
+  .state('contact', {
+    url: '/contact',
+    views: {
+      'main': {
+        templateUrl: 'templates/contact.html',
+        controller: 'ContactCtrl'
       }
     }
   });

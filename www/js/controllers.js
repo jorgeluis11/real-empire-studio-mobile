@@ -1,6 +1,6 @@
+api_url = 'http://www.realempirestudio.com/'
+
 angular.module('starter.controllers', [])
-
-
 
 .controller('MainCtrl', function($scope) {})
 
@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
   $scope.teachers = [];
 
   $scope.getTeacher = function(){
-    var url = "http://www.realempirestudio.com/api/maestros/";
+    var url = api_url + "api/maestros/";
     var opt = {limit:6000};
       $http({url:url,params:opt})
       .success(function(data){
@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
   $scope.teacher = {}
 
   $scope.getTeacherDetail = function(){
-    var url = "http://www.realempirestudio.com/api/maestros/"+$stateParams.slug+"/";
+    var url = api_url + "api/maestros/"+$stateParams.slug+"/";
     $http.get(url)
       .success(function(data){
         $scope.teacher = data;
@@ -81,7 +81,7 @@ angular.module('starter.controllers', [])
 
   $scope.getDay = function(day){
     console.log(day);
-      var url = "http://www.realempirestudio.com/api/clases/";
+      var url = api_url + "api/clases/";
       var opt = {day:day, limit:6000};
         $http({url:url,params:opt})
         .success(function(data){
@@ -92,6 +92,46 @@ angular.module('starter.controllers', [])
   }
 
   $scope.getClass();
+})
+.controller('VideosCtrl', function($scope, $http, $sce) {
+  $scope.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  }
+  $scope.videos = {}
+
+  $scope.getVideos = function(){
+    var url = api_url + "api/videos/";
+    $http.get(url)
+      .success(function(data){
+        for(i=0; i < data.results.length; i++){
+          data.results[i].youtube = "https://www.youtube.com/embed/"+data.results[i].youtube_id;
+        }
+        console.log(data)
+        $scope.videos = data;    
+      })
+  }
+
+  $scope.getVideos();
+})
+.filter('youtubeUrl', function() {
+  return function(embeded_id) {
+    return "https://www.youtube.com/embed/"+embeded_id;
+  };
+})
+.controller('EventsCtrl', function($scope, $http) {
+  $scope.events = {}
+
+  $scope.getEvents = function(){
+    var url = api_url + "api/eventos/";
+    $http.get(url)
+      .success(function(data){
+        $scope.events = data;
+    })
+  }
+
+  $scope.getEvents();
+})
+.controller('ContactCtrl', function($scope, $http) {
 })
 .filter('spanishDay', function() {
   return function(day) {
@@ -111,45 +151,4 @@ angular.module('starter.controllers', [])
          return "Sabado";       
      }
   };
-})
-
-.controller('VideosCtrl', function($scope, $http, $sce) {
-  $scope.trustSrc = function(src) {
-    return $sce.trustAsResourceUrl(src);
-  }
-  $scope.videos = {}
-
-  $scope.getVideos = function(){
-    var url = "http://www.realempirestudio.com/api/videos/";
-    $http.get(url)
-      .success(function(data){
-        for(i=0; i < data.results.length; i++){
-          data.results[i].youtube = "https://www.youtube.com/embed/"+data.results[i].youtube_id;
-        }
-        console.log(data)
-        $scope.videos = data;    
-      })
-  }
-
-  $scope.getVideos();
-})
-.filter('youtubeUrl', function() {
-  return function(embeded_id) {
-    return "https://www.youtube.com/embed/"+embeded_id;
-  };
-})
-
-.controller('EventsCtrl', function($scope, $http) {
-  $scope.events = {}
-
-  $scope.getVideos = function(){
-    var url = "http://www.realempirestudio.com/api/videos/";
-    $http.get(url)
-      .success(function(data){
-       
-        $scope.events = data;
-    })
-  }
-
-  $scope.getVideos();
 })
