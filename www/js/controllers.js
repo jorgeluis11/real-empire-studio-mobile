@@ -111,8 +111,8 @@ angular.module('starter.controllers', [])
       })
   }
 
-  $scope.shareAnywhere = function() {
-    $cordovaSocialSharing.share("Real Empire Studio, academia que cuenta con maestros y coreógrafos especializados en diferentes estilos.", "Real Empire Studio iPhone y Android App", "", "www.realempirestudio.com");
+  $scope.shareAnywhere = function(title, url) {
+    $cordovaSocialSharing.share(title+" - " + url, title+" - " + url, "http://realempirestudio.s3.amazonaws.com/img/realempire2.png", "www.realempirestudio.com");
   }
 
   $scope.getVideos();
@@ -130,6 +130,7 @@ angular.module('starter.controllers', [])
     $http.get(url)
       .success(function(data){
         $scope.events = data;
+        console.log($scope.events);
     })
   }
 
@@ -137,19 +138,7 @@ angular.module('starter.controllers', [])
 })
 .controller('ContactCtrl', function($scope, $http) {
 })
-.directive('socialGroup', [function () {
-  return {
-    restrict: 'A',
-    scope:{},
-    link: function (scope, element, attrs) {
-      element.on('click',function(){
-      window.open(attrs.url, '_system', 'location=yes');      
-        if (attrs.url.match("twitter") || attrs.url.match("instagram") || attrs.url.match("pinterest") || attrs.url.match("gplus")) 
-          window.open(attrs.alternative, '_system', 'location=yes');
-      });
-    }
-  }
-}])
+
 .filter('spanishDay', function() {
   return function(day) {
     console.log(day)

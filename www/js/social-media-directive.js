@@ -1,4 +1,4 @@
-angular.module("profeSearchStarter")
+angular.module("starter")
 .directive('about', ['$ionicModal', function ($ionicModal) {
 	return {
 		restrict: 'E',

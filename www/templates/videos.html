@@ -8,7 +8,7 @@
   <ion-content class="has-header" overflow-scroll = "true" >
     <ion-list class='video-list'>
 
-    <div ng-repeat="video in videos.results" ng-click="shareAnywhere()">
+    <div ng-repeat="video in videos.results" >
       <!--<h4 class="profile-class center white padding">
         {{video.name}}
       </h4> -->
@@ -22,10 +22,10 @@
           <p>
            {{video.description}}
           </p>
-          <a class="item item-icon-left assertive" href="#">
+         <!--  <a class="item item-icon-left assertive" href="#" ng-click="shareAnywhere(video.name, video.youtube)">
             <i class="icon ion-share"></i>
             Share Video
-          </a>
+          </a> -->
         </div>
 
     </div>

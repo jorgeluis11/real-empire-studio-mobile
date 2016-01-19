@@ -23,6 +23,16 @@
 	background-color: black !important;
 }
 
+/*.class-position{
+position: relative;
+    top: 50%;
+    left: 50%;
+}*/
+
+.class-position{
+margin-top: 10px;
+}
+
 .list-main{
 	height: 175px;
 	background-color: black;
@@ -32,7 +42,20 @@
     margin-bottom: 0px!important;
 }
 
-@media only screen and (max-device-width : 667px)
+@media only screen and (min-device-width : 300px)
+{ 
+    .list-main{
+        height: 175px;
+        background-color: black;
+        /*border-bottom: 1px solid rgba(255,255,255,0.5);*/
+        color:white;
+        padding: 0px 0px 5px 0px!important;
+        margin-bottom: 0px!important;
+    }
+
+}
+
+@media only screen and (min-device-width : 360px)
 { 
 	.list-main{
 		height: 200px;
@@ -45,6 +68,47 @@
 
 }
 
+@media only screen and (min-device-width : 410px)
+{ 
+	.list-main{
+		height: 220px;
+		background-color: black;
+		/*border-bottom: 1px solid rgba(255,255,255,0.5);*/
+		color:white;
+	    padding: 0px 0px 5px 0px!important;
+	    margin-bottom: 0px!important;
+	}
+
+}
+
+@media only screen and (min-device-width : 510px)
+{ 
+    .list-main{
+        height: 320px;
+        background-color: black;
+        /*border-bottom: 1px solid rgba(255,255,255,0.5);*/
+        color:white;
+        padding: 0px 0px 5px 0px!important;
+        margin-bottom: 0px!important;
+    }
+
+}
+
+@media only screen and (min-device-width : 800px)
+{ 
+    .list-main{
+        height: 420px;
+        background-color: black;
+        /*border-bottom: 1px solid rgba(255,255,255,0.5);*/
+        color:white;
+        padding: 0px 0px 5px 0px!important;
+        margin-bottom: 0px!important;
+    }
+
+}
+
+
+
 .img{
     margin-bottom: 0px!important;
 }
@@ -55,7 +119,7 @@
 }
 
 #maestros{
-    background: url('../img/maestros.png') no-repeat;
+    background: url('../img/maestros.jpg') no-repeat;
     background-size: 100%;
 }
 
@@ -79,7 +143,7 @@
     height: 100%;
     width: 100%;
     font-size: 16px;
-    text-shadow: 2px 2px #444;
+    text-shadow: 2px 2px #222;
     padding: 10px;
 }
 
@@ -281,3 +345,19 @@
 	padding:0 !important;
 }
 */
+
+.event-description{
+
+     overflow: visible; !important; 
+     text-overflow: initial !important; 
+     white-space: normal !important; 
+
+}
+
+.event-description p{
+
+     overflow: initial !important; 
+     text-overflow: initial !important; 
+     white-space: normal !important; 
+
+}
